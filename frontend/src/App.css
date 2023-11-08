@@ -1,0 +1,49 @@
+.app{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom, rgb(4, 80, 4), green);
+}
+.container{
+  max-width: 1200px;
+  width: 100%;
+  margin:5%  auto;
+  text-align: center;
+}
+.title{
+  font-family: 'Figtree', sans-serif;
+  font-size: 40px;
+  color: white;
+}
+.short-description{
+  font-family: 'Caveat', cursive;
+  font-size: 25px;
+  color: white;
+  line-height: 25px;
+  margin-bottom: 20px;
+}
+input{
+  font-family: 'Figtree', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  width: 60%;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background-color: white;
+
+}
+button{
+  font-family: 'Figtree', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 10px;  
+  background-color: rgb(0, 200, 0);
+  color: white;
+  margin: 10px;
+  cursor: pointer;
+}

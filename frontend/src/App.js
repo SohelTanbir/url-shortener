@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Loader from './components/Loader/Loader';
 
 
@@ -10,6 +10,7 @@ function App() {
   });
   const [shortenUrl, setShortenUrl ] = useState("");
   const [isError, setIsError ] =useState("");
+  const [loader, setLoader] = useState(false);
 
   // get user input url
   const handleChange = (e) => {
@@ -26,6 +27,7 @@ function App() {
       alert("Please Enter Your URL");
       return;
     }
+    setLoader(true);
   const response = await fetch('http://localhost:5000/url/shortener', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
@@ -33,17 +35,26 @@ function App() {
   });
   const {success,  message, shortUrl} = await response.json();
   if(!success){
+    setLoader(false);
     alert(message);
     return
   }
+  setLoader(false);
   alert(message);
   setShortenUrl(shortUrl);
-console.log(shortUrl)
+  //save shorten url to local storage
+  localStorage.setItem('shortenUrl', shortUrl);
     setInputUrl({
       url:'',
       slug:'',
     })
   }
+
+  useEffect(()=>{
+    const url = localStorage.getItem('shortenUrl');
+    setShortenUrl(url);
+  }, [])
+
   
   return (
     <>
@@ -67,7 +78,9 @@ console.log(shortUrl)
       </div>
  }
     </div>
-    <Loader/>
+    {
+      loader && <Loader/>
+    }
 </>
   );
 }

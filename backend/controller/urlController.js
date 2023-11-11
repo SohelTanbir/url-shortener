@@ -17,7 +17,7 @@ const createShortUrl = async (req, res)=>{
             message:'Slug already exists',
         })
     }
-    const shortUrl =`${ req.protocol}://${req.hostname}:${process.env.PORT}/sr/${slug}`;
+    const shortUrl =`${ req.protocol}://${req.hostname}/sr/${slug}`;
     const newShorten = await Shorten.create({url:inputUrl, slug:slug});
     const result = await newShorten.save();
     if(!result){

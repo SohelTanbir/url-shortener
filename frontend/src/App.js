@@ -30,7 +30,7 @@ function App() {
       return;
     }
     setLoader(true);
-  const response = await fetch('http://localhost:5000/url/shortener', {
+  const response = await fetch('https://url-shortener-flax-five.vercel.app/url/shortener', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(inputUrl)
@@ -64,7 +64,7 @@ function App() {
   // reset copy button to copy again
   setTimeout(()=>{
     setCopy(false);
-  }, 2000)
+  }, 3000)
 
 
   

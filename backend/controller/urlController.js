@@ -5,11 +5,11 @@ const generateRandomCharecter = require("../utilities/utilities");
 // create new short url 
 const createShortUrl = async (req, res)=>{
     const inputUrl = req.body.url;
-    const slug =  req.body.slug;
-    console.log(generateRandomCharecter(5));
-    return
+    const slug =   req.body.slug ? req.body.slug : generateRandomCharecter(5);
+
     try {
-    const newShorten = await Shorten.create({url:inputUrl, slug:slug});
+    const shortUrl = req.protocol + '://' +req.hostname + process.env.PORT +'/sr/'+slug;
+    const newShorten = await Shorten.create({url:inputUrl, slug:shortUrl});
     const result = await newShorten.save();
     if(!result){
      return res.status(500).json({
@@ -22,7 +22,7 @@ const createShortUrl = async (req, res)=>{
             success:true,
             message:'Short URL created successfully',
             url: inputUrl,
-            slug
+            slug:shortUrl
         })
     } catch (err) {
         res.status(500).json({

@@ -5,7 +5,7 @@ const router = express.Router();
 
 // url routes
 router.post("/url/shortener", createShortUrl);
-router.post("/sr/:slug", redirectUser);
+router.get("/sr/:slug", redirectUser);
 
 
 

@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 
 function App() {
@@ -36,20 +36,16 @@ function App() {
     return
   }
   alert(message);
-
+  setShortenUrl(shortUrl);
+console.log(shortUrl)
     setInputUrl({
       url:'',
       slug:'',
     })
   }
-
-
-
-
-
-
+  
   return (
-    <div className="app">
+    <>
         <div className="container">
           <h2 className="title">URL Shortener</h2>
           <p className="short-description">You can short your long url</p>
@@ -60,17 +56,17 @@ function App() {
             <input  onChange={handleChange} type="text" name='slug' placeholder="slug" value={inputUrl.slug} />
             <button className='generate-url-btn'>Generate URL</button>
           </form>
-         { shortenUrl&&
+          { shortenUrl&&
           <div className="output-url">
             <label>Shorten URL</label>
             <div className="shorten-url">
-              <p>htts://example.con</p>
+              <p>{shortenUrl}</p>
               <button className='copy-url-btn'>Copy</button>
             </div>    
-          </div>
-          }
-        </div>
+      </div>
+ }
     </div>
+</>
   );
 }
 

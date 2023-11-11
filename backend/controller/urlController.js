@@ -1,9 +1,13 @@
 const Shorten = require("../model/shortenModel");
+const generateRandomCharecter = require("../utilities/utilities");
+
 
 // create new short url 
 const createShortUrl = async (req, res)=>{
     const inputUrl = req.body.url;
     const slug =  req.body.slug;
+    console.log(generateRandomCharecter(5));
+    return
     try {
     const newShorten = await Shorten.create({url:inputUrl, slug:slug});
     const result = await newShorten.save();

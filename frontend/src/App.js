@@ -27,8 +27,12 @@ const handleSubmit = (e) => {
           <p className="short-description">You can short your long url</p>
           <form onSubmit={handleSubmit}>
             <input onChange={handleChange} type="text" placeholder="htts://example.con" value={inputUrl} />
-            <button>Generate Url</button>
+            <button className='generate-url-btn'>Generate URL</button>
           </form>
+          <div className="output-short-url">
+            <p>htts://example.con</p>
+            <button className='copy-url-btn'>Copy</button>
+          </div>
         </div>
     </div>
   );

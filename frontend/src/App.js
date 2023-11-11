@@ -1,7 +1,8 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import Loader from './components/Loader/Loader';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+  import { faCheck, faCopy } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   const [inputUrl, setInputUrl] = useState({
@@ -11,6 +12,7 @@ function App() {
   const [shortenUrl, setShortenUrl ] = useState("");
   const [isError, setIsError ] =useState("");
   const [loader, setLoader] = useState(false);
+  const [copy, setCopy] = useState(false);
 
   // get user input url
   const handleChange = (e) => {
@@ -40,7 +42,6 @@ function App() {
     return
   }
   setLoader(false);
-  alert(message);
   setShortenUrl(shortUrl);
   //save shorten url to local storage
   localStorage.setItem('shortenUrl', shortUrl);
@@ -49,11 +50,18 @@ function App() {
       slug:'',
     })
   }
-
   useEffect(()=>{
     const url = localStorage.getItem('shortenUrl');
     setShortenUrl(url);
   }, [])
+
+
+  // handle copy to clipboard
+  const handleCopyToClipboard = ()=>{
+    window.navigator.clipboard.writeText(shortenUrl);
+    setCopy(true);
+  }
+
 
   
   return (
@@ -63,9 +71,9 @@ function App() {
           <p className="short-description">You can short your long url</p>
           <form onSubmit={handleSubmit}>
             <label>Long URL</label>
-            <input className={`${isError ? 'error':''}`} onChange={handleChange} type="text" name='url' placeholder="htts://example.con" value={inputUrl.url} />
+            <input className={`${isError ? 'error':''}`} onChange={handleChange} type="text" name='url' placeholder="Enter Your URL" value={inputUrl.url} />
             <label>Slug (Optional)</label>
-            <input  onChange={handleChange} type="text" name='slug' placeholder="slug" value={inputUrl.slug} />
+            <input  onChange={handleChange} type="text" name='slug' placeholder="Slug" value={inputUrl.slug} />
             <button className='generate-url-btn'>Generate URL</button>
           </form>
           { shortenUrl&&
@@ -73,7 +81,16 @@ function App() {
             <label>Shorten URL</label>
             <div className="shorten-url">
               <p>{shortenUrl}</p>
-              <button className='copy-url-btn'>Copy</button>
+              
+              <button onClick={handleCopyToClipboard} className='copy-url-btn'>
+              {
+                !copy 
+                ?
+               <FontAwesomeIcon icon={faCopy} />
+               :
+               <FontAwesomeIcon icon={faCheck} />
+               }
+              </button>
             </div>    
       </div>
  }

@@ -8,6 +8,15 @@ const createShortUrl = async (req, res)=>{
     const inputUrl = req.body.url;
     const slug =   req.body.slug ? req.body.slug : generateRandomCharecter(5);
     try {
+    // check slug is already exist
+    const existSlug = await  Shorten.find({slug: slug});
+    if(existSlug.length > 0) {
+        console.log("slag already exists");
+        return res.status(400).json({
+            success:false,
+            message:'Slug already exists',
+        })
+    }
     const shortUrl =`${ req.protocol}://${req.hostname}:${process.env.PORT}/sr/${slug}`;
     const newShorten = await Shorten.create({url:inputUrl, slug:slug});
     const result = await newShorten.save();
@@ -38,14 +47,14 @@ const createShortUrl = async (req, res)=>{
 const redirectUser = async(req, res) =>{
     const slug =  req.params.slug;
     try {
-      const exisSlug = await  Shorten.find({slug: slug});
-      if(!exisSlug.length > 0){
+      const existSlug = await  Shorten.find({slug: slug});
+      if(!existSlug.length > 0){
        return res.status(404).json({
             success:false,
             message:'Your slug is invalid',
         });
       } 
-    res.redirect(exisSlug[0].url);
+    res.redirect(existSlug[0].url);
     } catch (err) {
         res.status(500).json({
             success:false,

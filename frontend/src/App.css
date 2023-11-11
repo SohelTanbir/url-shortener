@@ -89,14 +89,17 @@ button.generate-url-btn:hover{
 .copy-url-btn{
   font-family: 'Figtree', sans-serif;
   font-weight: 500;
+  font-size: 20px;
   border: none;
   outline: none;
-  padding: 8px 20px;
+  padding: 8px;
   border-radius: 10px;
   cursor: pointer;
-  color: #000;
-  background-color:#d4d4d4;
   user-select:none;
+  color: #7a7a7a;
+}
+.copy-url-btn:hover{
+  color: #6b6b6b;
 }
 .error{
   border: 1px solid red!important;

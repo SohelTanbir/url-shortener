@@ -1,10 +1,11 @@
 const express = require('express');
-const createShortUrl = require('../controller/urlController');
+const {createShortUrl, redirectUser} = require('../controller/urlController');
 const router = express.Router();
 
 
 // url routes
 router.post("/url/shortener", createShortUrl);
+router.post("/sr/:slug", redirectUser);
 
 
 

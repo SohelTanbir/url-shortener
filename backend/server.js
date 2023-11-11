@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
     res.send("Welcome to URL Shortener App!");
 })
 
-app.use("/api/v1", urlRoute);
+app.use(urlRoute);
 
 
 // default Error Handler

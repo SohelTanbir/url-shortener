@@ -44,14 +44,7 @@ const redirectUser = async(req, res) =>{
             message:'Your slug is invalid',
         });
       } 
-    console.log(res)
-    res.redirect('https://chat.openai.com/c/1985900c-0667-41c3-bc50-b78f343671f3');
-    res.status(200).json({
-        success:true,
-        message:'URL retrived successfully',
-        redirectTo:exisSlug[0].url,
-        slug:exisSlug[0].slug
-    });
+    res.redirect(exisSlug[0].url);
     } catch (err) {
         res.status(500).json({
             success:false,

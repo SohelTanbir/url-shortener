@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import Loader from './components/Loader/Loader';
 
 
 function App() {
@@ -66,6 +67,7 @@ console.log(shortUrl)
       </div>
  }
     </div>
+    <Loader/>
 </>
   );
 }

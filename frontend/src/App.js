@@ -61,6 +61,10 @@ function App() {
     window.navigator.clipboard.writeText(shortenUrl);
     setCopy(true);
   }
+  // reset copy button to copy again
+  setTimeout(()=>{
+    setCopy(false);
+  }, 2000)
 
 
   

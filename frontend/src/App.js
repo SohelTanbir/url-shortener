@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 function App() {
   const [inputUrl, setInputUrl] = useState("");
+  const [isError, setIsError ] =useState("sssss");
 
   // get user input url
   const handleChange = (e) => {
@@ -26,12 +27,18 @@ const handleSubmit = (e) => {
           <h2 className="title">URL Shortener</h2>
           <p className="short-description">You can short your long url</p>
           <form onSubmit={handleSubmit}>
-            <input onChange={handleChange} type="text" placeholder="htts://example.con" value={inputUrl} />
+            <label>Long URL</label>
+            <input className={`${isError} ? 'error' :''`} onChange={handleChange} type="text" placeholder="htts://example.con" value={inputUrl} />
+            <label>Slug (Optional)</label>
+            <input  onChange={handleChange} type="text" placeholder="htts://example.con" value={inputUrl} />
             <button className='generate-url-btn'>Generate URL</button>
           </form>
-          <div className="output-short-url">
-            <p>htts://example.con</p>
-            <button className='copy-url-btn'>Copy</button>
+          <div className="output-url">
+            <label>Shorten URL</label>
+            <div className="shorten-url">
+              <p>htts://example.con</p>
+              <button className='copy-url-btn'>Copy</button>
+            </div>    
           </div>
         </div>
     </div>

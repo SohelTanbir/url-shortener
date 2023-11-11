@@ -2,32 +2,39 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-image: linear-gradient(to bottom, rgb(4, 80, 4), green);
+  background-image: white
 }
 .container{
   max-width: 800px;
-  width: 90%;
-  margin: auto;
-  text-align: center;
+  width: 100%;
+  margin: 4% auto;
   padding-left: 15px;
   padding-right: 15px;
 }
 .title{
   font-family: 'Figtree', sans-serif;
   font-size: 40px;
-  color: white;
+  color: rgb(7, 58, 152);
+  text-align: center;
 }
 .short-description{
   font-family: 'Caveat', cursive;
+  font-weight: 600;
   font-size: 25px;
-  color: white;
+  color: rgb(7, 58, 152);
   line-height: 25px;
   margin-bottom: 20px;
+  text-align: center;
 }
 form{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: 100%;
+}
+label{
+  font-family: 'Figtree', sans-serif;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 5px;
+  padding-left: 5px;
 }
 input{
   font-family: 'Figtree', sans-serif;
@@ -38,11 +45,15 @@ input{
   outline: none;
   padding: 15px 20px;
   border-radius: 10px;
-  background-color: white;
-
+  background-color: #f1f1f1;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}
+input:focus{
+  border: 1px solid rgb(7, 58, 152);
 }
 button.generate-url-btn{
-  width: 200px;
+  width: 100%;
   font-family: 'Figtree', sans-serif;
   font-size: 18px;
   font-weight: 500;
@@ -50,22 +61,29 @@ button.generate-url-btn{
   outline: none;
   padding: 15px 20px;
   border-radius: 10px;  
-  background-color: rgb(0, 200, 0);
+  background-color: rgb(7, 58, 152);
   color: white;
-  margin: 10px;
+  margin-bottom:20px;
   cursor: pointer;
 }
-.output-short-url{
+button.generate-url-btn:hover{
+  background-color: rgb(6, 66, 178);
+}
+.output-url{
+  width: 100%;
+  padding: 15px 0px;
+}
+.shorten-url{
   font-family: 'Figtree', sans-serif;
-  font-weight: 500;
-  width: 94%;
+  font-weight: 400;
+  width: 100%;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
-  color: white;
-  background-color: rgba(0, 200, 0, .5);
+  padding: 10px 20px;
+  color: #000;
+  background-color:#f3f2f2;
   border-radius: 10px;
 }
 .copy-url-btn{
@@ -73,7 +91,13 @@ button.generate-url-btn{
   font-weight: 500;
   border: none;
   outline: none;
-  padding: 10px 20px;
+  padding: 8px 20px;
   border-radius: 10px;
   cursor: pointer;
+  color: #000;
+  background-color:#d4d4d4;
+  user-select:none;
+}
+.error{
+  border: 1px solid red!important;
 }

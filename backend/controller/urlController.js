@@ -25,6 +25,7 @@ const createShortUrl = async (req, res)=>{
             shortUrl
         })
     } catch (err) {
+        console.log('error', err)
         res.status(500).json({
             success:false,
             message:'Server is unavailable to process request',

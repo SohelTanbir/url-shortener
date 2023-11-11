@@ -1,9 +1,13 @@
 const express = require('express');
-const dotenv = require('dotenv').config();
+require('dotenv').config();
+const bodyParser = require("body-parser");
 const cors = require('cors');
 const connectDatabase = require('./database/databaseConnecion');
 
 const app  = express();
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
 app.use(cors());
 app.use(express.json());
 // Database connection

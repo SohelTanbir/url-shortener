@@ -18,19 +18,30 @@ function App() {
   }
 
 // handle submit the url
-const handleSubmit = (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  if(!inputUrl.url){
-    alert("Please Enter Your URL");
-    return;
+    if(!inputUrl.url){
+      alert("Please Enter Your URL");
+      return;
+    }
+  const response = await fetch('http://localhost:5000/url/shortener', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(inputUrl)
+  });
+  const {success,  message, shortUrl} = await response.json();
+  if(!success){
+    alert(message);
+    return
   }
-  console.log(inputUrl)
-  setInputUrl({
-    url:'',
-    slug:'',
-  })
-}
+  alert(message);
+
+    setInputUrl({
+      url:'',
+      slug:'',
+    })
+  }
 
 
 
